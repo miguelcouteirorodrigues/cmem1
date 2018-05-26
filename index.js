@@ -31,6 +31,7 @@ app.get('/', (req, res) => {
 });
 
 require('./app/routes/installation_type.routes.js')(app);
+require('./app/routes/event.routes.js')(app);
 
 // listen for requests
 app.listen(3000, () => {

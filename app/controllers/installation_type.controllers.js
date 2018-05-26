@@ -32,7 +32,7 @@ exports.findAll = (req, res) => {
         res.send(install_types);
     }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while retrieving notes."
+            message: err.message || "Some error occurred while retrieving installation types."
         });
     });
 };
