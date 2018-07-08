@@ -6,7 +6,7 @@ exports.create = (req, res) => {
     let message;
 
     if(!req.body.street) {
-        message += "Street can not be empty"
+        message = "Street can not be empty"
     }
     if(!req.body.city) {
         if (message != null) {
@@ -32,11 +32,17 @@ exports.create = (req, res) => {
         }
         message += "Installation Type can not be empty"
     }
-    if(!req.body.location) {
+    if(!req.body.latitude) {
         if (message != null) {
             message += ", ";
         }
-        message += "Location can not be empty"
+        message += "Latitude can not be empty"
+    }
+    if(!req.body.longitude) {
+        if (message != null) {
+            message += ", ";
+        }
+        message += "Longitude can not be empty"
     }
 
     if (message != null) {
@@ -55,7 +61,8 @@ exports.create = (req, res) => {
         description: req.body.description,
         installation_type_id: req.body.installation_type_id,
         installation_type_name: req.body.installation_type_name,
-        coordinates: req.body.location
+        latitude: req.body.latitude,
+        longitude: req.body.longitude
     });
 
     // Save Installation Type in the database
@@ -103,7 +110,7 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Update a note identified by the noteId in the request
+// Update an event identified by the eventId in the request
 exports.update = (req, res) => {
     // Validate Request
     if(!req.body.finished) {
@@ -112,7 +119,7 @@ exports.update = (req, res) => {
         });
     }
 
-    // Find installation type and update it with the request body
+    // Find event and update it with the request body
     Event.findByIdAndUpdate(req.params.eventId, {
         finished: req.body.finished
     }, {new: true})

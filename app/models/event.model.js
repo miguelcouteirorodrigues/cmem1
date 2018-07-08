@@ -9,7 +9,8 @@ const EventSchema = mongoose.Schema({
     description: String,
     installation_type_id: String,
     installation_type_name: String,
-    coordinates: [Number, Number]
+    latitude: Number,
+    longitude: Number
 },
 {
     timestamps: true
